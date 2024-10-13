@@ -19,7 +19,7 @@ module.exports = {
             }
 
             const response = await axios.get(`https://gnews.io/api/v4/search`, { params })
-            if (response.data && response.data.articles) {
+            if (response?.data?.articles) {
                 return response.data.articles
             } else {
                 throw {
@@ -29,10 +29,10 @@ module.exports = {
             }
         } catch (error) {
             if (error.response) {
-                const { status = 500, data } = error.response
+                const { status = 500, data = { message : 'An error occurred with the news API.' } } = error.response
                 throw {
                     status: status,
-                    message: data?.message || 'An error occurred with the news API.'
+                    message: data.message
                 }
             } else if (error.request) {
                 throw {

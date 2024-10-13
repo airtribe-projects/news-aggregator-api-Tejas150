@@ -12,7 +12,7 @@ router.post('/login', validateLogin, login)
 const authMiddleware = require('../middlewares/authMiddleware')
 router.use(authMiddleware)
 
-router.get('/preferences', authMiddleware, getUserPreferences)
-router.put('/preferences', authMiddleware, updateUserPreferences)
+router.get('/preferences', getUserPreferences)
+router.put('/preferences', updateUserPreferences)
 
 module.exports = router

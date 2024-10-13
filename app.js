@@ -22,5 +22,8 @@ connectDB()
         console.log(`🚀 Server is listening on ${port}`)
     })
 })
+.catch(error => {
+    console.log('❌ Something bad happened', error)
+})
 
 module.exports = app
